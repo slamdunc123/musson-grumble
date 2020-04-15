@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default class Insert extends Component {
@@ -6,6 +7,7 @@ export default class Insert extends Component {
 		first_name: '',
 		last_name: '',
 		email: '',
+		redirect: false,
 	};
 
 	onChangeFirstName = (e) => {
@@ -27,8 +29,8 @@ export default class Insert extends Component {
 	};
 
 	onSubmit = (e) => {
-		const { first_name, last_name, email } = this.state;
 		e.preventDefault();
+		const { first_name, last_name, email } = this.state;
 
 		const obj = {
 			first_name,
@@ -38,7 +40,14 @@ export default class Insert extends Component {
 		console.log(obj);
 		axios
 			.post('http://localhost/reactjscrud/insert.php', obj)
-			.then((res) => console.log('res.data'));
+			// .then((res) => console.log(res.data))
+			.then((res) => {
+				if (res.status === 201) {
+					this.setState({
+						redirect: true,
+					}); // after signing up, set the state to true. This will trigger a re-render
+				}
+			});
 
 		this.setState({
 			first_name: '',
@@ -48,13 +57,18 @@ export default class Insert extends Component {
 	};
 
 	render() {
-		const { first_name, last_name, email } = this.state;
+		const { first_name, last_name, email, redirect } = this.state;
 		const {
 			onChangeFirstName,
 			onChangeLastName,
 			onChangeEmail,
 			onSubmit,
 		} = this;
+
+		if (redirect) {
+			return <Redirect to='/view' />;
+		}
+
 		return (
 			<div style={{ marginTop: 10 }}>
 				<h3>Add New User</h3>
