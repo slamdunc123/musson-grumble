@@ -71,7 +71,7 @@ export default class Edit extends Component {
 			)
 			.then(console.log('Updated'))
 			.then((res) => {
-				if (res.status === 204) {
+				if (res.status === 200) {
 					this.setState({ redirect: true });
 				}
 			})
