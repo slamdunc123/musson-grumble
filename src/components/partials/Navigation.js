@@ -28,9 +28,9 @@ const Navigation = () => {
 
 	return (
 		<div>
-			{/* navigation menu */}
 			<div className='nav-container'>
 				<Brand />
+				{/* navigation menu */}
 				<div className='nav-menu'>
 					<NavLink className='nav-link' exact to='/'>
 						Home
@@ -52,50 +52,49 @@ const Navigation = () => {
 						<i className={'fas fa-bars'} onClick={toggleBurgerMenu}></i>
 					)}
 				</div>
-
 				{/* navigation mobile menu  */}
-			</div>
-			<div className={`nav-mobile-menu ${isBurgerMenuOpen ? 'opened' : ''}`}>
-				<NavLink
-					className='nav-link'
-					onClick={(e) => {
-						closeBurgerMenu(e);
-					}}
-					exact
-					to='/'
-				>
-					Home
-				</NavLink>
-				<NavLink
-					className='nav-link'
-					onClick={(e) => {
-						closeBurgerMenu(e);
-					}}
-					exact
-					to='/about'
-				>
-					About
-				</NavLink>
-				<NavLink
-					className='nav-link'
-					onClick={(e) => {
-						closeBurgerMenu(e);
-					}}
-					exact
-					to='/products'
-				>
-					Products
-				</NavLink>
-				<NavLink
-					className='nav-link'
-					onClick={(e) => {
-						closeBurgerMenu(e);
-					}}
-					exact
-					to='/contact'
-				>
-					Contact
-				</NavLink>
+				<div className={`nav-mobile-menu ${isBurgerMenuOpen ? 'opened' : ''}`}>
+					<NavLink
+						className='nav-link'
+						onClick={(e) => {
+							closeBurgerMenu(e);
+						}}
+						exact
+						to='/'
+					>
+						Home
+					</NavLink>
+					<NavLink
+						className='nav-link'
+						onClick={(e) => {
+							closeBurgerMenu(e);
+						}}
+						exact
+						to='/recipes'
+					>
+						Recipes
+					</NavLink>
+					<NavLink
+						className='nav-link'
+						onClick={(e) => {
+							closeBurgerMenu(e);
+						}}
+						exact
+						to='/about'
+					>
+						About
+					</NavLink>
+					<NavLink
+						className='nav-link'
+						onClick={(e) => {
+							closeBurgerMenu(e);
+						}}
+						exact
+						to='/contact'
+					>
+						Contact
+					</NavLink>
+				</div>
 			</div>
 		</div>
 	);

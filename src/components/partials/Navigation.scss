@@ -47,23 +47,24 @@
 }
 
 .nav-mobile-menu {
-	width: 100vw;
-	height: 0;
+	display: flex;
+	// margin-right: 1rem;
 	background-color: rgba(darken($base-color, 25%), 0.9);
 	position: absolute;
-	top: 50px;
-	display: flex;
+	top: 0;
 	flex-direction: column;
-	justify-content: space-around;
+	// justify-content: space-around;
 	text-align: center;
-	transition: all 0.3s ease-in-out;
+	// transition: all 0.1s ease-in-out;
 	opacity: 0;
 	visibility: hidden;
 
 	&.opened {
-		height: 100px;
-		opacity: 1;
+		width: 100vw;
+		height: 100vh;
+		opacity: 0.9;
 		visibility: visible;
+		padding: 3rem 0;
 	}
 
 	a {

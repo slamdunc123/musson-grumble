@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-
+import './recipes.scss';
 export default class EditRecipe extends Component {
 	state = {
 		name: '',
