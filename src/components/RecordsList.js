@@ -9,7 +9,10 @@ class RecordsList extends Component {
 
 	delete = () => {
 		axios
-			.get('http://localhost/reactjscrud/delete.php?id=' + this.props.obj.sId)
+			.get(
+				'http://localhost/musson-grumble-backend/delete.php?id=' +
+					this.props.obj.id
+			)
 			.then(console.log('Deleted'))
 			.then((res) => {
 				if (res.status === 204) {
@@ -21,18 +24,29 @@ class RecordsList extends Component {
 
 	render() {
 		const { redirect } = this.state;
-		const { fName, lName, email, sId } = this.props.obj;
+		const {
+			id,
+			name,
+			c_name,
+			description,
+			ingredients,
+			instructions,
+			suggestions,
+		} = this.props.obj;
 
 		if (redirect) {
 			return <Redirect to='/view' />;
 		}
 		return (
 			<tr>
-				<td>{fName}</td>
-				<td>{lName}</td>
-				<td>{email}</td>
+				<td>{name}</td>
+				<td>{c_name}</td>
+				<td>{description}</td>
+				<td>{ingredients}</td>
+				<td>{instructions}</td>
+				<td>{suggestions}</td>
 				<td>
-					<Link to={'/edit/' + sId} className='btn btn-primary'>
+					<Link to={'/edit/' + id} className='btn btn-primary'>
 						Edit
 					</Link>
 				</td>

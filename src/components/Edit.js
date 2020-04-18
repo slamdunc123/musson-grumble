@@ -2,28 +2,40 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
+let categories = [
+	{ val: 1, name: 'Meat' },
+	{ val: 2, name: 'Fish' },
+	{ val: 3, name: 'Vegetables' },
+	{ val: 4, name: 'Rice' },
+];
 export default class Edit extends Component {
 	state = {
-		id: '',
-		first_name: '',
-		last_name: '',
-		email: '',
+		name: '',
+		categoryId: '',
+		description: '',
+		ingredients: '',
+		instructions: '',
+		suggestions: '',
 		redirect: false,
+		categories: categories,
 	};
 
 	componentDidMount() {
 		axios
 			.get(
-				'http://localhost/reactjscrud/edit.php/?id=' +
+				'http://localhost/musson-grumble-backend/edit.php/?id=' +
 					this.props.match.params.id
 			)
 			.then((response) => {
-				// console.log(response.data);
+				console.log(response.data);
 				this.setState({
-					id: response.data.sId,
-					first_name: response.data.fName,
-					last_name: response.data.lName,
-					email: response.data.email,
+					id: response.data.id,
+					name: response.data.name,
+					description: response.data.description,
+					categoryId: response.data.category_id,
+					ingredients: response.data.ingredients,
+					instructions: response.data.instructions,
+					suggestions: response.data.suggestions,
 				});
 			})
 			.catch(function (error) {
@@ -31,33 +43,30 @@ export default class Edit extends Component {
 			});
 	}
 
-	onChangeFirstName = (e) => {
-		this.setState({
-			first_name: e.target.value,
-		});
-	};
-
-	onChangeLastName = (e) => {
-		this.setState({
-			last_name: e.target.value,
-		});
-	};
-
-	onChangeEmail = (e) => {
-		this.setState({
-			email: e.target.value,
-		});
+	onChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const { id, first_name, last_name, email } = this.state;
+		const {
+			id,
+			name,
+			description,
+			categoryId,
+			ingredients,
+			instructions,
+			suggestions,
+		} = this.state;
 
 		const obj = {
 			id: id,
-			first_name: first_name,
-			last_name: last_name,
-			email: email,
+			name,
+			categoryId,
+			description,
+			ingredients,
+			instructions,
+			suggestions,
 		};
 		// console.log(obj);
 		this.setState({
@@ -65,7 +74,7 @@ export default class Edit extends Component {
 		});
 		axios
 			.put(
-				'http://localhost/reactjscrud/update.php?id=' +
+				'http://localhost/musson-grumble-backend/update.php?id=' +
 					this.props.match.params.id,
 				obj
 			)
@@ -79,13 +88,16 @@ export default class Edit extends Component {
 	};
 
 	render() {
-		const { first_name, last_name, email, redirect } = this.state;
 		const {
-			onChangeFirstName,
-			onChangeLastName,
-			onChangeEmail,
-			onSubmit,
-		} = this;
+			name,
+			description,
+			categoryId,
+			ingredients,
+			instructions,
+			suggestions,
+			redirect,
+		} = this.state;
+		const { onChange, onSubmit } = this;
 
 		console.log(this.state);
 		if (redirect) {
@@ -94,39 +106,85 @@ export default class Edit extends Component {
 
 		return (
 			<div style={{ marginTop: 10 }}>
-				<h3>Edit User</h3>
+				<h3>Edit Recipe</h3>
 				<form onSubmit={onSubmit}>
 					<div className='form-group'>
-						<label>First Name: </label>
+						<label>Name: </label>
 						<input
+							placeholder='Description'
+							name='name'
 							type='text'
 							className='form-control'
-							value={first_name}
-							onChange={onChangeFirstName}
+							value={name}
+							onChange={onChange}
 						/>
 					</div>
 					<div className='form-group'>
-						<label>Last Name: </label>
-						<input
-							type='text'
+						<label>Category</label>
+						<br />
+						<select
+							value={categoryId}
 							className='form-control'
-							value={last_name}
-							onChange={onChangeLastName}
+							name='categoryId'
+							onChange={onChange}
+						>
+							{this.state.categories.map((category) => (
+								<option value={category.val}>{category.name}</option>
+							))}
+						</select>
+					</div>
+					<div className='form-group'>
+						<label>Description: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Description'
+							name='description'
+							className='form-control'
+							value={description}
+							onChange={onChange}
+						></textarea>
+					</div>
+					<div className='form-group'>
+						<label>Ingredients: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Ingredients'
+							name='ingredients'
+							className='form-control'
+							value={ingredients}
+							onChange={onChange}
 						/>
 					</div>
 					<div className='form-group'>
-						<label>Email: </label>
-						<input
-							type='text'
+						<label>Instructions: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Instructions'
+							name='instructions'
 							className='form-control'
-							value={email}
-							onChange={onChangeEmail}
-						/>
+							value={instructions}
+							onChange={onChange}
+						></textarea>
+					</div>
+					<div className='form-group'>
+						<label>Suggestions: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Suggestions'
+							name='suggestions'
+							className='form-control'
+							value={suggestions}
+							onChange={onChange}
+						></textarea>
 					</div>
 					<div className='form-group'>
 						<input
 							type='submit'
-							value='Update user'
+							value='Update Recipe'
 							className='btn btn-primary'
 						/>
 					</div>

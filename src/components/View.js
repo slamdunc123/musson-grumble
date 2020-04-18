@@ -4,16 +4,16 @@ import RecordsList from './RecordsList';
 
 export default class View extends Component {
 	state = {
-		students: [],
+		recipes: [],
 	};
 
 	componentDidMount = () => {
 		axios
-			.get('http://localhost/reactjscrud/list.php')
+			.get('http://localhost/musson-grumble-backend/list.php')
 			.then((response) => {
-				// console.log(response);
+				console.log(response);
 				this.setState({
-					students: response.data,
+					recipes: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -21,9 +21,9 @@ export default class View extends Component {
 			});
 	};
 
-	userList() {
-		const { students } = this.state;
-		return students.map(function (object, i) {
+	recipeList() {
+		const { recipes } = this.state;
+		return recipes.map(function (object, i) {
 			return <RecordsList obj={object} key={i} />;
 		});
 	}
@@ -32,17 +32,20 @@ export default class View extends Component {
 		return (
 			<div>
 				<p>Welcome to View Component!!</p>
-				<h3 align='center'>Users List</h3>
+				<h3 align='center'>Recipe List</h3>
 				<table className='table striped' style={{ marginTop: 20 }}>
 					<thead>
 						<tr>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Email</th>
+							<th>Name</th>
+							<th>Category</th>
+							<th>Description</th>
+							<th>Ingredients</th>
+							<th>Instructions</th>
+							<th>Suggestions</th>
 							<th colSpan='2'>Action</th>
 						</tr>
 					</thead>
-					<tbody>{this.userList()}</tbody>
+					<tbody>{this.recipeList()}</tbody>
 				</table>
 			</div>
 		);
