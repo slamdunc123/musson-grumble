@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-let categories = [
-	{ val: 1, name: 'Meat' },
-	{ val: 2, name: 'Fish' },
-	{ val: 3, name: 'Vegetables' },
-	{ val: 4, name: 'Rice' },
-];
 export default class Edit extends Component {
 	state = {
 		name: '',
@@ -16,8 +10,8 @@ export default class Edit extends Component {
 		ingredients: '',
 		instructions: '',
 		suggestions: '',
+		categories: [],
 		redirect: false,
-		categories: categories,
 	};
 
 	componentDidMount() {
@@ -36,6 +30,18 @@ export default class Edit extends Component {
 					ingredients: response.data.ingredients,
 					instructions: response.data.instructions,
 					suggestions: response.data.suggestions,
+				});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+
+		axios
+			.get('http://localhost/musson-grumble-backend/categories.php')
+			.then((response) => {
+				console.log(response.data);
+				this.setState({
+					categories: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -129,7 +135,9 @@ export default class Edit extends Component {
 							onChange={onChange}
 						>
 							{this.state.categories.map((category) => (
-								<option value={category.val}>{category.name}</option>
+								<option key={category.id} value={category.id}>
+									{category.name}
+								</option>
 							))}
 						</select>
 					</div>
