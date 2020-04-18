@@ -1,0 +1,81 @@
+@import '../../scss/variables.scss';
+
+.nav-container {
+	display: flex;
+	height: 50px;
+	width: 100%;
+	background-color: $base-color;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-burger {
+	margin: 0 1rem 0 0;
+	font-size: 1.5rem;
+	align-self: flex-end;
+	padding: 0.5rem;
+	color: $text-color;
+	transition: all 0.3s ease-in-out;
+
+	&.opened {
+		transform: rotate(180deg) scaleX(-1);
+		// transform: scaleX(-1);
+	}
+
+	@media (min-width: 576px) {
+		display: none;
+	}
+}
+
+.nav-menu {
+	display: flex;
+	margin-right: 1rem;
+
+	a {
+		text-decoration: none;
+		padding: 0.5rem;
+		color: $text-color;
+
+		&:hover {
+			color: darken($text-color, 25%);
+		}
+	}
+
+	@media (max-width: 575px) {
+		display: none;
+	}
+}
+
+.nav-mobile-menu {
+	width: 100vw;
+	height: 0;
+	background-color: rgba(darken($base-color, 25%), 0.9);
+	position: absolute;
+	top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: center;
+	transition: all 0.3s ease-in-out;
+	opacity: 0;
+	visibility: hidden;
+
+	&.opened {
+		height: 100px;
+		opacity: 1;
+		visibility: visible;
+	}
+
+	a {
+		color: $text-color;
+		text-decoration: none;
+
+		&:hover {
+			color: darken($text-color, 25%);
+		}
+	}
+
+	@media (min-width: 576px) {
+		display: none;
+	}
+}

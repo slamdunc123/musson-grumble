@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-export default class Edit extends Component {
+export default class EditRecipe extends Component {
 	state = {
 		name: '',
 		categoryId: '',
@@ -107,7 +107,7 @@ export default class Edit extends Component {
 
 		console.log(this.state);
 		if (redirect) {
-			return <Redirect to='/view' />;
+			return <Redirect to='/recipes' />;
 		}
 
 		return (

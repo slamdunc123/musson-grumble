@@ -1,0 +1,39 @@
+.header-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.header-title {
+	display: flex;
+}
+
+.header-menu {
+	display: flex;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.main-container-row {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 10px;
+}
+
+.main-container-block {
+}
+
+.main-container-form {
+}
+
+.main-container-block-body {
+	color: blue;
+}
+.main-container-block-head {
+	font-size: 1rem;
+	font-weight: bold;
+}

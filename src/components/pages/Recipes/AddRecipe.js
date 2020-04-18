@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-export default class Insert extends Component {
+export default class AddRecipe extends Component {
 	state = {
 		name: '',
 		categoryId: '1',
@@ -87,7 +87,7 @@ export default class Insert extends Component {
 		const { onChange, onSubmit } = this;
 
 		if (redirect) {
-			return <Redirect to='/view' />;
+			return <Redirect to='/recipes' />;
 		}
 
 		return (

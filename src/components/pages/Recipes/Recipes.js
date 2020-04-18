@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import RecordsList from './RecordsList';
+import RecipeList from './RecipeList';
+import { Link } from 'react-router-dom';
+import './recipes.scss';
 
-export default class View extends Component {
+export default class ReadRecipe extends Component {
 	state = {
 		recipes: [],
 	};
@@ -24,29 +26,31 @@ export default class View extends Component {
 	recipeList() {
 		const { recipes } = this.state;
 		return recipes.map(function (object, i) {
-			return <RecordsList obj={object} key={i} />;
+			return <RecipeList obj={object} key={i} />;
 		});
 	}
 
 	render() {
 		return (
 			<div>
-				<p>Welcome to View Component!!</p>
 				<h3 align='center'>Recipe List</h3>
-				<table className='table striped' style={{ marginTop: 20 }}>
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Category</th>
-							<th>Description</th>
-							<th>Ingredients</th>
-							<th>Instructions</th>
-							<th>Suggestions</th>
-							<th colSpan='2'>Action</th>
-						</tr>
-					</thead>
+				<div class='container'>
+					<div class='main-container-row'>
+						<div class='main-container-block'>
+							<div class='main-container-block-body'>
+								<Link
+									to={'/add'}
+									className='nav-link btn btn-primary'
+									type='button'
+								>
+									Add
+								</Link>
+							</div>
+						</div>
+					</div>
+
 					<tbody>{this.recipeList()}</tbody>
-				</table>
+				</div>
 			</div>
 		);
 	}
