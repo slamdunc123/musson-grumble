@@ -38,9 +38,6 @@ const Navigation = () => {
 					<NavLink className='nav-link' exact to='/recipes'>
 						Recipes
 					</NavLink>
-					<NavLink className='nav-link' exact to='/categories'>
-						Categories
-					</NavLink>
 					<NavLink className='nav-link' exact to='/about'>
 						About
 					</NavLink>
@@ -76,16 +73,6 @@ const Navigation = () => {
 						to='/recipes'
 					>
 						Recipes
-					</NavLink>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/categories'
-					>
-						Categories
 					</NavLink>
 					<NavLink
 						className='nav-link'

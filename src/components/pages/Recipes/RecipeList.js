@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
+import './recipes.scss';
 
 class RecordsList extends Component {
 	state = {
@@ -11,7 +12,7 @@ class RecordsList extends Component {
 		axios
 			.get(
 				'http://localhost/musson-grumble-backend/delete.php?id=' +
-					this.props.obj.id
+					this.props.recipe.id
 			)
 			.then(console.log('Deleted'))
 			.then((res) => {
@@ -32,45 +33,60 @@ class RecordsList extends Component {
 			ingredients,
 			instructions,
 			suggestions,
-		} = this.props.obj;
+		} = this.props.recipe;
 
 		if (redirect) {
 			return <Redirect to='/recipes' />;
 		}
 		return (
-			<div class='main-container-row'>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Name</div>
-					<div class='main-container-block-body'>{name}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Category</div>
-					<div class='main-container-block-body'>{c_name}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Description</div>
-					<div class='main-container-block-body'>{description}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Ingredients</div>
-					<div class='main-container-block-body'>{ingredients}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Instructions</div>
-					<div class='main-container-block-body'>{instructions}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-head'>Suggestions</div>
-					<div class='main-container-block-body'>{suggestions}</div>
-				</div>
-				<div class='main-container-block'>
-					<div class='main-container-block-body'>
-						<Link to={'/edit/' + id} className='btn btn-primary'>
-							Edit
-						</Link>
-						<button onClick={this.delete} className='btn btn-danger'>
-							Delete
-						</button>
+			<div className='container'>
+				<div className='card'>
+					<div className='card-body'>
+						<div>
+							<h5>Name</h5>
+							<p>{name}</p>
+						</div>
+
+						<div>
+							<h5>Category</h5>
+							<p>{c_name}</p>
+						</div>
+						<div>
+							<h5>Description</h5>
+							<p>{description}</p>
+						</div>
+						<div>
+							<h5>Ingredients</h5>
+							<p>{ingredients}</p>
+						</div>
+						<div>
+							<h5>Instructions</h5>
+							<p>{instructions}</p>
+						</div>
+						<div>
+							<h5>Suggestions</h5>
+							<p>{suggestions}</p>
+						</div>
+						<div>
+							<div>
+								<Link
+									to={'/edit/' + id}
+									type='button'
+									className='btn btn-info btn-sm mb-2 mr-1'
+								>
+									Edit
+								</Link>
+
+								<button
+									onClick={this.delete}
+									type='button'
+									className='btn btn-info btn-sm mb-2 mr-1'
+								>
+									Delete
+								</button>
+								<hr />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

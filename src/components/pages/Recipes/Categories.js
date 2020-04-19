@@ -29,12 +29,14 @@ const Categories = () => {
 					<div className='card' key={category.id}>
 						<h5 className='card-header'>{category.name}</h5>
 						<div className='card-body'>
-							<h5 className='card-title'>Special title treatment</h5>
 							<p className='card-text'>
 								With supporting text below as a natural lead-in to additional
 								content.
 							</p>
-							<Link to={'/recipes/' + category.id} className='btn btn-primary'>
+							<Link
+								to={'/recipes/' + category.id}
+								className='btn btn-outline-info btn-sm'
+							>
 								View
 							</Link>
 						</div>

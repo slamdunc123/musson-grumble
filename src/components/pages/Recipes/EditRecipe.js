@@ -193,7 +193,7 @@ export default class EditRecipe extends Component {
 						<input
 							type='submit'
 							value='Update Recipe'
-							className='btn btn-primary'
+							className='btn btn-info btn-sm'
 						/>
 					</div>
 				</form>
