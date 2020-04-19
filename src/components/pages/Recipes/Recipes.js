@@ -11,7 +11,10 @@ export default class ReadRecipe extends Component {
 
 	componentDidMount = () => {
 		axios
-			.get('http://localhost/musson-grumble-backend/list.php')
+			.get(
+				'http://localhost/musson-grumble-backend/list.php?id=' +
+					this.props.match.params.id
+			)
 			.then((response) => {
 				console.log(response);
 				this.setState({
@@ -34,10 +37,10 @@ export default class ReadRecipe extends Component {
 		return (
 			<div>
 				<h3 align='center'>Recipe List</h3>
-				<div class='container'>
-					<div class='main-container-row'>
-						<div class='main-container-block'>
-							<div class='main-container-block-body'>
+				<div className='container'>
+					<div className='main-container-row'>
+						<div className='main-container-block'>
+							<div className='main-container-block-body'>
 								<Link
 									to={'/add'}
 									className='nav-link btn btn-primary'
