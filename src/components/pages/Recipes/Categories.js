@@ -26,7 +26,7 @@ const Categories = () => {
 				<div>No data</div>
 			) : (
 				categories.map((category) => (
-					<div className='card' key={category.id}>
+					<div className='card mt-2' key={category.id}>
 						<h5 className='card-header'>{category.name}</h5>
 						<div className='card-body'>
 							<p className='card-text'>

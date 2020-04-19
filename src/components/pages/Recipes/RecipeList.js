@@ -40,52 +40,49 @@ class RecordsList extends Component {
 		}
 		return (
 			<div className='container'>
-				<div className='card'>
+				<div className='card mt-2'>
 					<div className='card-body'>
 						<div>
-							<h5>Name</h5>
+							<h6>Name</h6>
 							<p>{name}</p>
 						</div>
 
 						<div>
-							<h5>Category</h5>
+							<h6>Category</h6>
 							<p>{c_name}</p>
 						</div>
 						<div>
-							<h5>Description</h5>
+							<h6>Description</h6>
 							<p>{description}</p>
 						</div>
 						<div>
-							<h5>Ingredients</h5>
+							<h6>Ingredients</h6>
 							<p>{ingredients}</p>
 						</div>
 						<div>
-							<h5>Instructions</h5>
+							<h6>Instructions</h6>
 							<p>{instructions}</p>
 						</div>
 						<div>
-							<h5>Suggestions</h5>
+							<h6>Suggestions</h6>
 							<p>{suggestions}</p>
 						</div>
 						<div>
-							<div>
-								<Link
-									to={'/edit/' + id}
-									type='button'
-									className='btn btn-info btn-sm mb-2 mr-1'
-								>
-									Edit
-								</Link>
+							<Link
+								to={'/edit/' + id}
+								type='button'
+								className='btn btn-info btn-sm mb-2 mr-1'
+							>
+								Edit
+							</Link>
 
-								<button
-									onClick={this.delete}
-									type='button'
-									className='btn btn-info btn-sm mb-2 mr-1'
-								>
-									Delete
-								</button>
-								<hr />
-							</div>
+							<button
+								onClick={this.delete}
+								type='button'
+								className='btn btn-info btn-sm mb-2 mr-1'
+							>
+								Delete
+							</button>
 						</div>
 					</div>
 				</div>

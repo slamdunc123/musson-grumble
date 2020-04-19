@@ -40,7 +40,7 @@ export default class ReadRecipe extends Component {
 
 				<Link
 					to={'/add'}
-					className='nav-link btn btn-outline-info btn-sm'
+					className='nav-link btn btn-outline-info btn-sm m-3'
 					type='button'
 				>
 					Add
