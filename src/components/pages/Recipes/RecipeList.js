@@ -40,50 +40,60 @@ class RecordsList extends Component {
 		}
 		return (
 			<div className='container'>
-				<div className='card mt-2'>
-					<div className='card-body'>
-						<div>
-							<h6>Name</h6>
+				<div className='block'>
+					<div>
+						<h6>Name</h6>
+						<div className='block-body'>
 							<p>{name}</p>
 						</div>
+					</div>
 
-						<div>
-							<h6>Category</h6>
+					<div>
+						<h6>Category</h6>
+						<div className='block-body'>
 							<p>{c_name}</p>
 						</div>
-						<div>
-							<h6>Description</h6>
+					</div>
+					<div>
+						<h6>Description</h6>
+						<div className='block-body'>
 							<p>{description}</p>
 						</div>
-						<div>
-							<h6>Ingredients</h6>
+					</div>
+					<div>
+						<h6>Ingredients</h6>
+						<div className='block-body'>
 							<p>{ingredients}</p>
 						</div>
-						<div>
-							<h6>Instructions</h6>
+					</div>
+					<div>
+						<h6>Instructions</h6>
+						<div className='block-body'>
 							<p>{instructions}</p>
 						</div>
-						<div>
-							<h6>Suggestions</h6>
+					</div>
+					<div>
+						<h6>Suggestions</h6>
+						<div className='block-body'>
 							<p>{suggestions}</p>
 						</div>
-						<div>
-							<Link
-								to={'/edit/' + id}
-								type='button'
-								className='btn btn-info btn-sm mb-2 mr-1'
-							>
-								Edit
-							</Link>
+					</div>
+					<div className='block-body'>
+						<Link
+							to={'/edit/' + id}
+							type='button'
+							className='btn btn-info btn-sm mb-2 mr-1'
+						>
+							Edit
+						</Link>
 
-							<button
-								onClick={this.delete}
-								type='button'
-								className='btn btn-info btn-sm mb-2 mr-1'
-							>
-								Delete
-							</button>
-						</div>
+						<button
+							onClick={this.delete}
+							type='button'
+							className='btn btn-info btn-sm mb-2 mr-1'
+						>
+							Delete
+						</button>
 					</div>
 				</div>
 			</div>

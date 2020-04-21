@@ -28,6 +28,7 @@ export default class ReadRecipe extends Component {
 
 	recipeList() {
 		const { recipes } = this.state;
+		// console.log('ReadRecipe -> recipeList -> recipes', recipes);
 		return recipes.map((recipe) => {
 			return <RecipeList recipe={recipe} key={recipe.id} />;
 		});
@@ -40,7 +41,7 @@ export default class ReadRecipe extends Component {
 
 				<Link
 					to={'/add'}
-					className='nav-link btn btn-outline-info btn-sm m-3'
+					className='nav-link btn btn-outline-info btn-sm'
 					type='button'
 				>
 					Add
