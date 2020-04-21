@@ -12,9 +12,9 @@ class RecordsList extends Component {
 	delete = () => {
 		axios
 			.get(`${domain}/delete.php?id=` + this.props.recipe.id)
-			.then(console.log('Deleted'))
+			// .then(console.log('Deleted'))
 			.then((res) => {
-				if (res.status === 204) {
+				if (res.status === 200) {
 					this.setState({ redirect: true });
 				}
 			})

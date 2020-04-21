@@ -58,10 +58,10 @@ export default class AddRecipe extends Component {
 			.post(`${domain}/insert.php`, obj)
 			// .then((res) => console.log(res.data))
 			.then((res) => {
-				if (res.status === 201) {
+				if (res.status === 200) {
 					this.setState({
 						redirect: true,
-					}); // after signing up, set the state to true. This will trigger a re-render
+					}); // set the state to true. This will trigger a re-render
 				}
 			});
 
@@ -86,6 +86,7 @@ export default class AddRecipe extends Component {
 			redirect,
 		} = this.state;
 		const { onChange, onSubmit } = this;
+		console.log(redirect);
 
 		if (redirect) {
 			return <Redirect to='/recipes' />;
