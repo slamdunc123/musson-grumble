@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import domain from '../../../domain';
 import RecipeList from './RecipeList';
 import { Link } from 'react-router-dom';
 // import './recipes.scss';
@@ -11,10 +12,7 @@ export default class ReadRecipe extends Component {
 
 	componentDidMount = () => {
 		axios
-			.get(
-				'http://localhost/musson-grumble-backend/list.php?id=' +
-					this.props.match.params.id
-			)
+			.get(`${domain}/list.php?id=` + this.props.match.params.id)
 			.then((response) => {
 				console.log(response);
 				this.setState({

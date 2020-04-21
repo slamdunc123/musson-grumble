@@ -13,12 +13,12 @@ const Main = () => {
 	return (
 		<Switch>
 			<Route exact path='/' component={Home} />
-			<Route exact path='/about' component={About} />
-			<Route exact path='/recipes/:id' component={Recipes} />
+			<Route path='/about' component={About} />
 			<Route exact path='/recipes' component={Categories} />
-			<Route exact path='/contact' component={Contact} />
-			<Route exact path='/add' component={AddRecipe} />
-			<Route exact path='/edit/:id' component={EditRecipe} />
+			<Route path='/recipes/:id' component={Recipes} />
+			<Route path='/contact' component={Contact} />
+			<Route path='/add' component={AddRecipe} />
+			<Route path='/edit/:id' component={EditRecipe} />
 		</Switch>
 	);
 };

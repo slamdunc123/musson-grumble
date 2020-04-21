@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import domain from '../../../domain';
 
 export default class AddRecipe extends Component {
 	state = {
@@ -16,7 +17,7 @@ export default class AddRecipe extends Component {
 
 	componentDidMount = () => {
 		axios
-			.get('http://localhost/musson-grumble-backend/categories.php')
+			.get(`${domain}/categories.php`)
 			.then((response) => {
 				console.log(response.data);
 				this.setState({
@@ -54,7 +55,7 @@ export default class AddRecipe extends Component {
 		};
 		console.log(obj);
 		axios
-			.post('http://localhost/musson-grumble-backend/insert.php', obj)
+			.post(`${domain}/insert.php`, obj)
 			// .then((res) => console.log(res.data))
 			.then((res) => {
 				if (res.status === 201) {

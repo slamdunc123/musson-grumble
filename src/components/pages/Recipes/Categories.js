@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './recipes.scss';
+import domain from '../../../domain';
 
 const Categories = () => {
 	const [categories, setCategories] = useState([]);
@@ -10,9 +11,7 @@ const Categories = () => {
 	useEffect(() => {
 		const getCategories = async () => {
 			// setIsLoading(true);
-			const results = await axios.get(
-				'http://localhost/musson-grumble-backend/categories.php'
-			);
+			const results = await axios.get(`${domain}/categories.php`);
 			setCategories(results.data);
 			setIsLoading(false);
 			console.log(results.data);

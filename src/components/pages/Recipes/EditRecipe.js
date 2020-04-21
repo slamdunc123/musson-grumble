@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import domain from '../../../domain';
 import './recipes.scss';
 export default class EditRecipe extends Component {
 	state = {
@@ -16,10 +17,7 @@ export default class EditRecipe extends Component {
 
 	componentDidMount() {
 		axios
-			.get(
-				'http://localhost/musson-grumble-backend/edit.php/?id=' +
-					this.props.match.params.id
-			)
+			.get(`${domain}/edit.php/?id=` + this.props.match.params.id)
 			.then((response) => {
 				console.log(response.data);
 				this.setState({
@@ -37,7 +35,7 @@ export default class EditRecipe extends Component {
 			});
 
 		axios
-			.get('http://localhost/musson-grumble-backend/categories.php')
+			.get(`${domain}/categories.php`)
 			.then((response) => {
 				console.log(response.data);
 				this.setState({
@@ -79,11 +77,7 @@ export default class EditRecipe extends Component {
 			obj,
 		});
 		axios
-			.put(
-				'http://localhost/musson-grumble-backend/update.php?id=' +
-					this.props.match.params.id,
-				obj
-			)
+			.put(`${domain}/update.php?id=` + this.props.match.params.id, obj)
 			.then(console.log('Updated'))
 			.then((res) => {
 				if (res.status === 200) {

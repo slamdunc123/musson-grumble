@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
+import domain from '../../../domain';
 import './recipes.scss';
 
 class RecordsList extends Component {
@@ -10,10 +11,7 @@ class RecordsList extends Component {
 
 	delete = () => {
 		axios
-			.get(
-				'http://localhost/musson-grumble-backend/delete.php?id=' +
-					this.props.recipe.id
-			)
+			.get(`${domain}/delete.php?id=` + this.props.recipe.id)
 			.then(console.log('Deleted'))
 			.then((res) => {
 				if (res.status === 204) {

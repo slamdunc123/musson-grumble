@@ -7,7 +7,7 @@ import Main from './components/layout/Main/Main';
 
 function App() {
 	return (
-		<Router>
+		<Router basename={'/musson-grumble'}>
 			<div className='container'>
 				<Header />
 				<Main />
