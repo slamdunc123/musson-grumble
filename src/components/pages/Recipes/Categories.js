@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './recipes.scss';
 import domain from '../../../domain';
+import Category from './Category';
 
 const Categories = () => {
 	const [categories, setCategories] = useState([]);
@@ -27,23 +27,7 @@ const Categories = () => {
 			) : (
 				<div className='container'>
 					{categories.map((category) => (
-						<div className='block' key={category.id}>
-							<div className='block-header'>
-								<h6>
-									{category.name}
-									<span> - {category.sub_title}</span>
-								</h6>
-							</div>
-							<div className='block-body'>
-								<p className='block-text'>{category.description}</p>
-								<Link
-									to={'/recipes/' + category.id}
-									className='btn btn-outline-info btn-sm'
-								>
-									View
-								</Link>
-							</div>
-						</div>
+						<Category category={category} />
 					))}
 				</div>
 			)}
