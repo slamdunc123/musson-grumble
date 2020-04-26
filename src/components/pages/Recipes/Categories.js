@@ -24,7 +24,7 @@ const Categories = () => {
 			{isLoading ? (
 				<div>No data</div>
 			) : (
-				<div className='container'>
+				<div className='container-fluid'>
 					{categories.map((category) => (
 						<Category category={category} />
 					))}

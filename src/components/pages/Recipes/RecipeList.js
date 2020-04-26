@@ -37,7 +37,7 @@ class RecordsList extends Component {
 			return <Redirect to='/recipes' />;
 		}
 		return (
-			<div className='container'>
+			<div className='container-fluid'>
 				<div className='block'>
 					<div>
 						<h6>Name</h6>
