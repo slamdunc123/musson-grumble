@@ -10,15 +10,15 @@ const Category = ({ category }) => {
 	};
 
 	return (
-		<div className='block' key={category.id}>
+		<div className='block animate' key={category.id}>
+			<div onClick={toggleBody} align='center'>
+				{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
+			</div>
 			<div className='block-header'>
 				<h6>
 					{category.name}
 					<span> - {category.sub_title}</span>
 				</h6>
-			</div>
-			<div onClick={toggleBody} align='center'>
-				{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
 			</div>
 			{isBodyOpen && (
 				<div className='block-body'>
