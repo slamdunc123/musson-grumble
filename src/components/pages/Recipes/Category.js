@@ -11,9 +11,6 @@ const Category = ({ category }) => {
 
 	return (
 		<div className='block animate' key={category.id}>
-			<div onClick={toggleBody} align='center'>
-				{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
-			</div>
 			<div className='block-header'>
 				<h6>
 					{category.name}
@@ -32,6 +29,9 @@ const Category = ({ category }) => {
 					</Link>
 				</div>
 			)}
+			<div onClick={toggleBody} align='center'>
+				{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
+			</div>
 		</div>
 	);
 };
