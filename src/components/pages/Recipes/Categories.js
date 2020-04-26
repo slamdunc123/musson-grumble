@@ -15,7 +15,6 @@ const Categories = () => {
 			setCategories(results.data);
 			setIsLoading(false);
 			console.log(results.data);
-			console.log(isLoading);
 		};
 		getCategories();
 	}, []);
