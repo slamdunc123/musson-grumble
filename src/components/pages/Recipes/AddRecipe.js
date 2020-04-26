@@ -7,7 +7,7 @@ import './recipes.scss';
 export default class AddRecipe extends Component {
 	state = {
 		name: '',
-		categoryId: '1',
+		categoryId: this.props.match.params.id,
 		description: '',
 		ingredients: '',
 		instructions: '',
@@ -88,6 +88,7 @@ export default class AddRecipe extends Component {
 		} = this.state;
 		const { onChange, onSubmit } = this;
 		console.log(redirect);
+		console.log(categoryId);
 
 		if (redirect) {
 			return <Redirect to='/recipes' />;

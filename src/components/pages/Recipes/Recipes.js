@@ -38,7 +38,7 @@ export default class ReadRecipe extends Component {
 				<h5 align='center'>Recipe List</h5>
 
 				<Link
-					to={'/add'}
+					to={'/add/' + this.props.match.params.id}
 					className='nav-link btn btn-outline-info btn-sm'
 					type='button'
 				>
