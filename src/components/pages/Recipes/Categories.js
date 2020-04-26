@@ -22,6 +22,7 @@ const Categories = () => {
 
 	return (
 		<>
+			<h5 align='center'>Categories</h5>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />
@@ -29,7 +30,7 @@ const Categories = () => {
 			) : (
 				<div className='container-fluid'>
 					{categories.map((category) => (
-						<Category category={category} />
+						<Category category={category} key={category.id} />
 					))}
 				</div>
 			)}
