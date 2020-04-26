@@ -3,6 +3,7 @@ import axios from 'axios';
 import './recipes.scss';
 import domain from '../../../domain';
 import Category from './Category';
+import LoadingSpinner from '../../partials/LoadingSpinner';
 
 const Categories = () => {
 	const [categories, setCategories] = useState([]);
@@ -22,7 +23,9 @@ const Categories = () => {
 	return (
 		<>
 			{isLoading ? (
-				<div>No data</div>
+				<div>
+					<LoadingSpinner />
+				</div>
 			) : (
 				<div className='container-fluid'>
 					{categories.map((category) => (
