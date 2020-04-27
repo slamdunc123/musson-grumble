@@ -3,7 +3,7 @@
 .splash-body {
 	align-items: center;
 	background-attachment: fixed;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
 		url(../../../assets/images/food-groups.jpg);
 	background-position: center;
 	background-size: cover;
@@ -24,7 +24,7 @@
 .splash-cta {
 	background-color: transparent;
 	border: 1px solid white;
-	color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 1);
 	margin-top: 2rem;
 	padding: 0.5rem;
 	text-decoration: none;
