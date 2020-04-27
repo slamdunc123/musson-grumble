@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import './recipes.scss';
 
 const Category = ({ category }) => {
 	const [isBodyOpen, setIsBodyOpen] = useState('');
@@ -9,8 +10,12 @@ const Category = ({ category }) => {
 		setIsBodyOpen(!isBodyOpen);
 	};
 
+	const dataCleanse = () => {
+		const categoryName = category.name.replace(/ /g, '');
+		return categoryName.toLowerCase();
+	};
 	return (
-		<div className='block animate' key={category.id}>
+		<div className={`block animate ${dataCleanse()}`}>
 			<div className='block-header'>
 				<h6>
 					{category.name}
@@ -23,7 +28,7 @@ const Category = ({ category }) => {
 
 					<Link
 						to={'/recipes/' + category.id}
-						className='btn btn-outline-info btn-sm'
+						className='btn btn-outline-light btn-sm'
 					>
 						View
 					</Link>
