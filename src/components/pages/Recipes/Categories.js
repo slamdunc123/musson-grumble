@@ -28,7 +28,7 @@ const Categories = () => {
 					<LoadingSpinner />
 				</div>
 			) : (
-				<div className='container-fluid'>
+				<div className='category-container'>
 					{categories.map((category) => (
 						<Category category={category} key={category.id} />
 					))}
