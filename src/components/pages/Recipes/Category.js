@@ -23,7 +23,7 @@ const Category = ({ category }) => {
 		}
 
 		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
+		// return () => window.removeEventListener('resize', handleResize);
 	}, []);
 
 	const toggleBody = () => {
@@ -36,38 +36,15 @@ const Category = ({ category }) => {
 	};
 	return (
 		<>
-			{windowDimensions.width < 576 ? (
-				<div className={`category-block small ${dataCleanse()}`}>
-					<div className='block-header'>
-						<h6>
-							{category.name}
-							<span> - {category.sub_title}</span>
-						</h6>
-					</div>
-					{isBodyOpen && (
-						<div className='block-body'>
-							<p className='block-text'>{category.description}</p>
-
-							<Link
-								to={'/recipes/' + category.id}
-								className='btn btn-outline-light btn-sm'
-							>
-								View
-							</Link>
-						</div>
-					)}
-					<div onClick={toggleBody} align='center'>
-						{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
-					</div>
+			{/* {windowDimensions.width < 577 ? ( */}
+			<div className={`category-block small ${dataCleanse()}`}>
+				<div className='block-header'>
+					<h6>
+						{category.name}
+						<span> - {category.sub_title}</span>
+					</h6>
 				</div>
-			) : (
-				<div className={`category-block large ${dataCleanse()}`}>
-					<div className='block-header'>
-						<h6>
-							{category.name}
-							<span> - {category.sub_title}</span>
-						</h6>
-					</div>
+				{isBodyOpen && (
 					<div className='block-body'>
 						<p className='block-text'>{category.description}</p>
 
@@ -78,8 +55,31 @@ const Category = ({ category }) => {
 							View
 						</Link>
 					</div>
+				)}
+				<div onClick={toggleBody} align='center'>
+					{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
 				</div>
-			)}
+			</div>
+			{/* ) : ( */}
+			<div className={`category-block large ${dataCleanse()}`}>
+				<div className='block-header'>
+					<h6>
+						{category.name}
+						<span> - {category.sub_title}</span>
+					</h6>
+				</div>
+				<div className='block-body'>
+					<p className='block-text'>{category.description}</p>
+
+					<Link
+						to={'/recipes/' + category.id}
+						className='btn btn-outline-light btn-sm'
+					>
+						View
+					</Link>
+				</div>
+			</div>
+			{/* )} */}
 		</>
 	);
 };
