@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import About from '../../pages/About/About';
 import Recipes from '../../pages/Recipes/Recipes';
+import RecipesList from '../../pages/Recipes/RecipesList';
 import Categories from '../../pages/Recipes/Categories';
 import Contact from '../../pages/Contact/Contact';
 import AddRecipe from '../../pages/Recipes/AddRecipe';
@@ -15,6 +16,7 @@ const Main = () => {
 			<Route exact path='/' component={Home} />
 			<Route path='/about' component={About} />
 			<Route exact path='/categories' component={Categories} />
+			<Route path='/recipes-list' component={RecipesList} />>
 			<Route path='/recipes/:id' component={Recipes} />
 			<Route path='/contact' component={Contact} />
 			<Route path='/add/:id' component={AddRecipe} />
