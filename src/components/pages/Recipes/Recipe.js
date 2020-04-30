@@ -13,7 +13,7 @@ class Recipe extends Component {
 
 	delete = () => {
 		axios
-			.get(`${domain}/delete.php?id=` + this.props.recipe.id)
+			.get(`${domain}/deleteRecipe.php?id=` + this.props.recipe.id)
 			// .then(console.log('Deleted'))
 			.then((res) => {
 				if (res.status === 200) {

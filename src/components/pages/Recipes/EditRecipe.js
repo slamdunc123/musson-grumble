@@ -17,7 +17,7 @@ export default class EditRecipe extends Component {
 
 	componentDidMount() {
 		axios
-			.get(`${domain}/edit.php/?id=` + this.props.match.params.id)
+			.get(`${domain}/editRecipe.php/?id=` + this.props.match.params.id)
 			.then((response) => {
 				console.log(response.data);
 				this.setState({
@@ -77,7 +77,7 @@ export default class EditRecipe extends Component {
 			obj,
 		});
 		axios
-			.put(`${domain}/update.php?id=` + this.props.match.params.id, obj)
+			.put(`${domain}/updateRecipe.php?id=` + this.props.match.params.id, obj)
 			.then(console.log('Updated'))
 			.then((res) => {
 				if (res.status === 200) {

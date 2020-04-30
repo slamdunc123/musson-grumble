@@ -3,25 +3,22 @@ import axios from 'axios';
 import domain from '../../../domain';
 import Recipe from './Recipe';
 import { Link } from 'react-router-dom';
-import LoadingSpinner from '../../partials/LoadingSpinner';
 // import './recipes.scss';
 
-export default class RecipesList extends Component {
+export default class CategoryRecipes extends Component {
 	state = {
 		recipes: [],
-		isLoading: true,
+		categoryName: '',
 	};
 
 	componentDidMount = () => {
 		axios
-			.get(`${domain}/getAllRecipes.php`)
+			.get(`${domain}/categoryRecipes.php?id=` + this.props.match.params.id)
 			.then((response) => {
 				console.log(response.data);
 				this.setState({
 					recipes: response.data,
-				});
-				this.setState({
-					isLoading: false,
+					categoryName: response.data[0].c_name,
 				});
 			})
 			.catch(function (error) {
@@ -37,13 +34,15 @@ export default class RecipesList extends Component {
 	recipeList() {
 		const { recipes } = this.state;
 		// console.log('ReadRecipe -> recipeList -> recipes', recipes);
-		return recipes.map((recipe) => <div key={recipe.id}>{recipe.name}</div>);
+		return recipes.map((recipe) => {
+			return <Recipe recipe={recipe} key={recipe.id} />;
+		});
 	}
 
 	render() {
 		return (
 			<>
-				<h5 align='center'>Recipes List</h5>
+				<h5 align='center'>{this.state.categoryName}</h5>
 
 				<Link
 					to={'/add/' + this.props.match.params.id}

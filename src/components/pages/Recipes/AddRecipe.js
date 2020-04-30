@@ -56,7 +56,7 @@ export default class AddRecipe extends Component {
 		};
 		console.log(obj);
 		axios
-			.post(`${domain}/insert.php`, obj)
+			.post(`${domain}/addRecipe.php`, obj)
 			// .then((res) => console.log(res.data))
 			.then((res) => {
 				if (res.status === 200) {
