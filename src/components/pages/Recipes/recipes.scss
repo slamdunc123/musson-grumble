@@ -34,7 +34,7 @@
 }
 
 .recipes-container {
-	min-height: 30vh;
+	min-height: 50vh;
 }
 
 .category-container {
@@ -121,4 +121,17 @@ span {
 	font-weight: 400;
 	font-size: small;
 	font-style: italic;
+}
+
+.recipe-link {
+	margin: 1rem;
+
+	a {
+		text-decoration: none;
+		color: $base-color;
+
+		&:hover {
+			color: darken($base-color, 10);
+		}
+	}
 }

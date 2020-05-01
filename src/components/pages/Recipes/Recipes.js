@@ -40,7 +40,15 @@ export default class Recipes extends Component {
 
 	recipeList(renderedRecipes) {
 		return renderedRecipes.map((recipe) => (
-			<div key={recipe.id}>{recipe.name}</div>
+			<div className='recipe-link' key={recipe.id}>
+				<Link
+					to={'/recipes/' + recipe.id}
+					// className='nav-link btn btn-outline-info btn-sm'
+					// type='button'
+				>
+					{recipe.name}
+				</Link>
+			</div>
 		));
 	}
 
@@ -68,13 +76,13 @@ export default class Recipes extends Component {
 					</div>
 				) : (
 					<>
-						<Link
+						{/* <Link
 							to={'/add/' + this.props.match.params.id}
 							className='nav-link btn btn-outline-info btn-sm'
 							type='button'
 						>
 							Add
-						</Link>
+						</Link> */}
 						<div className='recipes-container'>
 							{this.recipeList(renderedRecipes)}
 						</div>

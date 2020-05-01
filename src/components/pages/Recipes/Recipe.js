@@ -9,11 +9,29 @@ class Recipe extends Component {
 	state = {
 		redirect: false,
 		isBodyOpen: false,
+		recipe: [],
+	};
+
+	componentDidMount = () => {
+		axios
+			.get(`${domain}/recipe.php?id=` + this.props.match.params.id)
+			.then((response) => {
+				console.log(response.data);
+				this.setState({
+					recipe: response.data[0],
+				});
+				this.setState({
+					isLoading: false,
+				});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 
 	delete = () => {
 		axios
-			.get(`${domain}/deleteRecipe.php?id=` + this.props.recipe.id)
+			.get(`${domain}/deleteRecipe.php?id=` + this.state.recipe.id)
 			// .then(console.log('Deleted'))
 			.then((res) => {
 				if (res.status === 200) {
@@ -39,74 +57,80 @@ class Recipe extends Component {
 			ingredients,
 			instructions,
 			suggestions,
-		} = this.props.recipe;
+		} = this.state.recipe;
 
 		if (redirect) {
 			return <Redirect to='/recipes' />;
 		}
 		return (
-			<div className='block animate'>
-				<div onClick={this.toggleBody} align='center'>
-					{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
-				</div>
+			// <div className='block animate'>
+			// 	<div onClick={this.toggleBody} align='center'>
+			// 		{!isBodyOpen ? <FiChevronDown /> : <FiChevronUp />}
+			// 	</div>
+			// 	<div className='block-header'>
+			// 		<h6>Name</h6>
+			// 		<div className='block-body'>
+			// 			<p>{name}</p>
+			// 		</div>
+			// 	</div>
+			// 	{isBodyOpen && (
+			<>
 				<div className='block-header'>
 					<h6>Name</h6>
 					<div className='block-body'>
 						<p>{name}</p>
 					</div>
 				</div>
-				{isBodyOpen && (
-					<>
-						<div className='block-header'>
-							<h6>Category</h6>
-							<div className='block-body'>
-								<p>{c_name}</p>
-							</div>
-						</div>
-						<div className='block-header'>
-							<h6>Description</h6>
-							<div className='block-body'>
-								<p>{description}</p>
-							</div>
-						</div>
-						<div className='block-header'>
-							<h6>Ingredients</h6>
-							<div className='block-body'>
-								<p>{ingredients}</p>
-							</div>
-						</div>
-						<div className='block-header'>
-							<h6>Instructions</h6>
-							<div className='block-body'>
-								<p>{instructions}</p>
-							</div>
-						</div>
-						<div className='block-header'>
-							<h6>Suggestions</h6>
-							<div className='block-body'>
-								<p>{suggestions}</p>
-							</div>
-						</div>
-						<div className='block-body'>
-							<Link
-								to={'/edit/' + id}
-								type='button'
-								className='btn btn-info btn-sm mb-2 mr-1'
-							>
-								Edit
-							</Link>
+				<div className='block-header'>
+					<h6>Category</h6>
+					<div className='block-body'>
+						<p>{c_name}</p>
+					</div>
+				</div>
+				<div className='block-header'>
+					<h6>Description</h6>
+					<div className='block-body'>
+						<p>{description}</p>
+					</div>
+				</div>
+				<div className='block-header'>
+					<h6>Ingredients</h6>
+					<div className='block-body'>
+						<p>{ingredients}</p>
+					</div>
+				</div>
+				<div className='block-header'>
+					<h6>Instructions</h6>
+					<div className='block-body'>
+						<p>{instructions}</p>
+					</div>
+				</div>
+				<div className='block-header'>
+					<h6>Suggestions</h6>
+					<div className='block-body'>
+						<p>{suggestions}</p>
+					</div>
+				</div>
+				<div className='block-body'>
+					<Link
+						to={'/edit/' + id}
+						type='button'
+						className='btn btn-info btn-sm mb-2 mr-1'
+					>
+						Edit
+					</Link>
 
-							<button
-								onClick={this.delete}
-								type='button'
-								className='btn btn-info btn-sm mb-2 mr-1'
-							>
-								Delete
-							</button>
-						</div>
-					</>
-				)}
-			</div>
+					<button
+						onClick={this.delete}
+						type='button'
+						className='btn btn-info btn-sm mb-2 mr-1'
+					>
+						Delete
+					</button>
+				</div>
+			</>
+			// 	)}
+			// </div>
 		);
 	}
 }

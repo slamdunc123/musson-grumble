@@ -3,7 +3,7 @@ import axios from 'axios';
 import domain from '../../../domain';
 import Recipe from './Recipe';
 import { Link } from 'react-router-dom';
-// import './recipes.scss';
+import './recipes.scss';
 
 export default class CategoryRecipes extends Component {
 	state = {
@@ -34,9 +34,18 @@ export default class CategoryRecipes extends Component {
 	recipeList() {
 		const { recipes } = this.state;
 		// console.log('ReadRecipe -> recipeList -> recipes', recipes);
-		return recipes.map((recipe) => {
-			return <Recipe recipe={recipe} key={recipe.id} />;
-		});
+		// return recipes.map((recipe) => <Recipe recipe={recipe} key={recipe.id} />);
+		return recipes.map((recipe) => (
+			<div className='recipe-link' key={recipe.id}>
+				<Link
+					to={'/recipes/' + recipe.id}
+					// className='nav-link btn btn-outline-info btn-sm'
+					// type='button'
+				>
+					{recipe.name}
+				</Link>
+			</div>
+		));
 	}
 
 	render() {
