@@ -49,7 +49,7 @@ const Category = ({ category }) => {
 						<p className='block-text'>{category.description}</p>
 
 						<Link
-							to={'/recipes/' + category.id}
+							to={'/categories/' + category.id}
 							className='btn btn-outline-light btn-sm'
 						>
 							View

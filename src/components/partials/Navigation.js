@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 // styles
-import './Navigation.scss';
+import './navigation.scss';
 
 // routing
 import { NavLink } from 'react-router-dom';
 
 // partials
-import Brand from '../partials/Brand';
+import Brand from './Brand';
 
 const Navigation = () => {
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);

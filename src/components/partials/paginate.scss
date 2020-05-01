@@ -1,0 +1,35 @@
+@import '../../scss/variables.scss';
+
+.pagination-container {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination {
+	li {
+		list-style-type: none;
+		display: inline-block;
+		margin: 0.2em;
+		padding: 0.5em;
+		text-decoration: none;
+
+		a {
+			color: $base-color;
+			text-decoration: none;
+		}
+
+		a:visited,
+		a:link {
+			text-decoration: none;
+		}
+	}
+
+	.active {
+		background: $base-color;
+		border-radius: 5px;
+
+		a {
+			color: white;
+		}
+	}
+}

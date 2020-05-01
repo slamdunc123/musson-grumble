@@ -1,7 +1,7 @@
 import React from 'react';
 
 // css
-import './SplashScreen.scss';
+import './splashscreen.scss';
 
 const SplashScreen = ({ callback, title }) => {
 	console.log(title);
