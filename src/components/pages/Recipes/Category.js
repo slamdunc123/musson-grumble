@@ -1,43 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import './recipes.scss';
 
-function getWindowDimensions() {
-	const { innerWidth: width, innerHeight: height } = window;
-	return {
-		width,
-		height,
-	};
-}
-
 const Category = ({ category }) => {
 	const [isBodyOpen, setIsBodyOpen] = useState('');
-	const [windowDimensions, setWindowDimensions] = useState(
-		getWindowDimensions()
-	);
-
-	useEffect(() => {
-		function handleResize() {
-			setWindowDimensions(getWindowDimensions());
-		}
-
-		window.addEventListener('resize', handleResize);
-		// return () => window.removeEventListener('resize', handleResize);
-	}, []);
 
 	const toggleBody = () => {
 		setIsBodyOpen(!isBodyOpen);
 	};
 
-	const dataCleanse = () => {
+	const changeText = () => {
 		const categoryName = category.name.replace(/ /g, '');
 		return categoryName.toLowerCase();
 	};
 	return (
 		<>
-			{/* {windowDimensions.width < 577 ? ( */}
-			<div className={`category-block small ${dataCleanse()}`}>
+			<div className={`category-block small ${changeText()}`}>
 				<div className='block-header'>
 					<h6>
 						{category.name}
@@ -61,7 +40,7 @@ const Category = ({ category }) => {
 				</div>
 			</div>
 			{/* ) : ( */}
-			<div className={`category-block large ${dataCleanse()}`}>
+			<div className={`category-block large ${changeText()}`}>
 				<div className='block-header'>
 					<h6>
 						{category.name}

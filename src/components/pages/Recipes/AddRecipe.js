@@ -1,72 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import domain from '../../../domain';
 import './recipes.scss';
 
-export default class AddRecipe extends Component {
-	state = {
+const AddRecipe = (props) => {
+	const [categories, setCategories] = useState([]);
+	const [redirect, setRedirect] = useState(false);
+	const [obj, setObj] = useState({
 		name: '',
-		categoryId: this.props.match.params.id,
+		categoryId: props.match.params.id,
 		description: '',
 		ingredients: '',
 		instructions: '',
 		suggestions: '',
-		categories: [],
-		redirect: false,
-	};
+	});
 
-	componentDidMount = () => {
-		axios
-			.get(`${domain}/categories.php`)
-			.then((response) => {
-				console.log(response.data);
-				this.setState({
-					categories: response.data,
-				});
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	};
-
-	onChange = (e) => {
-		this.setState({ [e.target.name]: e.target.value });
-	};
-
-	onSubmit = (e) => {
-		e.preventDefault();
-		console.log(this.state);
-		const {
-			name,
-			categoryId,
-			description,
-			ingredients,
-			instructions,
-			suggestions,
-		} = this.state;
-
-		const obj = {
-			name,
-			categoryId,
-			description,
-			ingredients,
-			instructions,
-			suggestions,
+	useEffect(() => {
+		const getCategories = async () => {
+			const results = await axios.get(`${domain}/categories.php`);
+			setCategories(results.data);
+			// setIsLoading(false);
+			console.log(results.data);
 		};
+		getCategories();
+	}, []);
+
+	const onChange = (e) => {
+		setObj({ ...obj, [e.target.name]: e.target.value });
+	};
+
+	const onSubmit = (e) => {
+		e.preventDefault();
 		console.log(obj);
 		axios
 			.post(`${domain}/addRecipe.php`, obj)
 			// .then((res) => console.log(res.data))
 			.then((res) => {
 				if (res.status === 200) {
-					this.setState({
-						redirect: true,
-					}); // set the state to true. This will trigger a re-render
+					setRedirect(true); // set the state to true. This will trigger a re-render
 				}
 			});
 
-		this.setState({
+		setObj({
 			name: '',
 			categoryId: '',
 			description: '',
@@ -76,114 +52,108 @@ export default class AddRecipe extends Component {
 		});
 	};
 
-	render() {
-		const {
-			name,
-			categoryId,
-			description,
-			ingredients,
-			instructions,
-			suggestions,
-			redirect,
-		} = this.state;
-		const { onChange, onSubmit } = this;
-		console.log(redirect);
-		console.log(categoryId);
+	const {
+		name,
+		categoryId,
+		description,
+		ingredients,
+		instructions,
+		suggestions,
+	} = obj;
+	console.log(redirect);
+	console.log(categoryId);
 
-		if (redirect) {
-			return <Redirect to='/recipes' />;
-		}
-
-		return (
-			<div className='container'>
-				<div className='block'>
-					<h3>Add New Recipe</h3>
-					<form onSubmit={onSubmit}>
-						<div className='form-group'>
-							<label>Name: </label>
-							<input
-								placeholder='Description'
-								name='name'
-								type='text'
-								className='form-control'
-								value={name}
-								onChange={onChange}
-							/>
-						</div>
-						<div className='form-group'>
-							<label>Category</label>
-							<br />
-							<select
-								value={categoryId}
-								className='form-control'
-								name='categoryId'
-								onChange={onChange}
-							>
-								{this.state.categories.map((category) => (
-									<option key={category.id} value={category.id}>
-										{category.name}
-									</option>
-								))}
-							</select>
-						</div>
-						<div className='form-group'>
-							<label>Description: </label>
-							<textarea
-								rows='5'
-								cols='5'
-								placeholder='Description'
-								name='description'
-								className='form-control'
-								value={description}
-								onChange={onChange}
-							></textarea>
-						</div>
-						<div className='form-group'>
-							<label>Ingredients: </label>
-							<textarea
-								rows='5'
-								cols='5'
-								placeholder='Ingredients'
-								name='ingredients'
-								className='form-control'
-								value={ingredients}
-								onChange={onChange}
-							/>
-						</div>
-						<div className='form-group'>
-							<label>Instructions: </label>
-							<textarea
-								rows='5'
-								cols='5'
-								placeholder='Instructions'
-								name='instructions'
-								className='form-control'
-								value={instructions}
-								onChange={onChange}
-							></textarea>
-						</div>
-						<div className='form-group'>
-							<label>Suggestions: </label>
-							<textarea
-								rows='5'
-								cols='5'
-								placeholder='Suggestions'
-								name='suggestions'
-								className='form-control'
-								value={suggestions}
-								onChange={onChange}
-							></textarea>
-						</div>
-						<div className='form-group'>
-							<input
-								type='submit'
-								value='Save'
-								className='btn btn-info btn-sm'
-							/>
-						</div>
-					</form>
-				</div>
-			</div>
-		);
+	if (redirect) {
+		return <Redirect to='/recipes' />;
 	}
-}
+
+	return (
+		<div className='container'>
+			<div className='block'>
+				<h3>Add New Recipe</h3>
+				<form onSubmit={onSubmit}>
+					<div className='form-group'>
+						<label>Name: </label>
+						<input
+							placeholder='Description'
+							name='name'
+							type='text'
+							className='form-control'
+							value={name}
+							onChange={onChange}
+						/>
+					</div>
+					<div className='form-group'>
+						<label>Category</label>
+						<br />
+						<select
+							value={categoryId}
+							className='form-control'
+							name='categoryId'
+							onChange={onChange}
+						>
+							{categories.map((category) => (
+								<option key={category.id} value={category.id}>
+									{category.name}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className='form-group'>
+						<label>Description: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Description'
+							name='description'
+							className='form-control'
+							value={description}
+							onChange={onChange}
+						></textarea>
+					</div>
+					<div className='form-group'>
+						<label>Ingredients: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Ingredients'
+							name='ingredients'
+							className='form-control'
+							value={ingredients}
+							onChange={onChange}
+						/>
+					</div>
+					<div className='form-group'>
+						<label>Instructions: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Instructions'
+							name='instructions'
+							className='form-control'
+							value={instructions}
+							onChange={onChange}
+						></textarea>
+					</div>
+					<div className='form-group'>
+						<label>Suggestions: </label>
+						<textarea
+							rows='5'
+							cols='5'
+							placeholder='Suggestions'
+							name='suggestions'
+							className='form-control'
+							value={suggestions}
+							onChange={onChange}
+						></textarea>
+					</div>
+					<div className='form-group'>
+						<input type='submit' value='Save' className='btn btn-info btn-sm' />
+					</div>
+				</form>
+			</div>
+		</div>
+	);
+};
+
+export default AddRecipe;

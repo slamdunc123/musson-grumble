@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import domain from '../../../domain';
-import Recipe from './Recipe';
 import { Link } from 'react-router-dom';
 import './recipes.scss';
 
