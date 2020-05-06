@@ -1,66 +1,50 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import domain from '../../../domain';
 import { Link } from 'react-router-dom';
 import './recipes.scss';
 
-export default class CategoryRecipes extends Component {
-	state = {
-		recipes: [],
-		categoryName: '',
+const CategoryRecipes = (props) => {
+	const [recipes, setRecipes] = useState([]);
+	const [categoryName, setCategoryName] = useState('');
+
+	useEffect(() => {
+		const getCategoryRecipes = async () => {
+			const results = await axios.get(
+				`${domain}/categoryRecipes.php?id=` + props.match.params.id
+			);
+			console.log(results.data);
+			setRecipes(results.data);
+			setCategoryName(results.data[0].c_name);
+		};
+		getCategoryRecipes();
+	}, [props.match.params.id]);
+
+	const recipeList = () => {
+		if (recipes.length > 0) {
+			return recipes.map((recipe) => (
+				<div className='recipe-link' key={recipe.id}>
+					<Link to={'/recipes/' + recipe.id}>{recipe.name}</Link>
+				</div>
+			));
+		}
+		return 'No recipes';
 	};
 
-	componentDidMount = () => {
-		axios
-			.get(`${domain}/categoryRecipes.php?id=` + this.props.match.params.id)
-			.then((response) => {
-				console.log(response.data);
-				this.setState({
-					recipes: response.data,
-					categoryName: response.data[0].c_name,
-				});
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	};
+	return (
+		<>
+			<h5 align='center'>{categoryName}</h5>
 
-	// getCategoryName = () => {
-	// 	const { recipes } = this.state;
-	// 	return recipes.c_name;
-	// };
+			<Link
+				to={'/add/' + props.match.params.id}
+				className='nav-link btn btn-outline-info btn-sm'
+				type='button'
+			>
+				Add
+			</Link>
+			<div>{recipeList()}</div>
+		</>
+	);
+};
 
-	recipeList() {
-		const { recipes } = this.state;
-		// console.log('ReadRecipe -> recipeList -> recipes', recipes);
-		// return recipes.map((recipe) => <Recipe recipe={recipe} key={recipe.id} />);
-		return recipes.map((recipe) => (
-			<div className='recipe-link' key={recipe.id}>
-				<Link
-					to={'/recipes/' + recipe.id}
-					// className='nav-link btn btn-outline-info btn-sm'
-					// type='button'
-				>
-					{recipe.name}
-				</Link>
-			</div>
-		));
-	}
-
-	render() {
-		return (
-			<>
-				<h5 align='center'>{this.state.categoryName}</h5>
-
-				<Link
-					to={'/add/' + this.props.match.params.id}
-					className='nav-link btn btn-outline-info btn-sm'
-					type='button'
-				>
-					Add
-				</Link>
-				<div>{this.recipeList()}</div>
-			</>
-		);
-	}
-}
+export default CategoryRecipes;
