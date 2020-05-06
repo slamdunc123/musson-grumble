@@ -39,7 +39,7 @@
 
 .category-container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	flex-wrap: wrap;
 }
 
@@ -48,7 +48,7 @@
 	flex-direction: column;
 	width: 100vw;
 	padding: 0.5rem;
-	margin: 0.5rem 0;
+	margin: 0.05rem;
 	background-position: center;
 	background-size: cover;
 	align-items: center;
@@ -60,18 +60,17 @@
 	animation-name: fadeIn;
 
 	&.small {
-		@media (min-width: 576px) {
+		@media (min-width: 1024px) {
 			display: none;
 		}
 	}
 
 	&.large {
-		width: 45vw;
-		margin: 0.5rem 0;
-		width: 49%;
 		font-size: large;
+		align-items: flex-start;
+		flex: 0 0 33.133%;
 
-		@media (max-width: 576px) {
+		@media (max-width: 1024px) {
 			display: none;
 		}
 	}
