@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BrandContext } from '../../context/context';
 
 // styles
 import './brand.scss';
 
 const Brand = () => {
-	return <div className='brand-container'>Musson Grumble</div>;
+	const brand = useContext(BrandContext);
+	return <div className='brand-container'>{brand.name}</div>;
 };
 
 export default Brand;

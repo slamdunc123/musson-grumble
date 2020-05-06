@@ -9,17 +9,15 @@ import SplashScreen from './components/pages/SplashScreen/SplashScreen';
 
 function App() {
 	const [isSplash, setIsSplash] = useState(true);
-	const [splashTitle, setSplashTitle] = useState('Musson Grumble');
 
 	const callbackSplashScreen = () => {
 		setIsSplash(false);
-		setSplashTitle('');
 	};
 
 	return (
 		<Router basename={'/musson-grumble'}>
 			{isSplash ? (
-				<SplashScreen callback={callbackSplashScreen} title={splashTitle} />
+				<SplashScreen callback={callbackSplashScreen} />
 			) : (
 				<div className='container-fluid'>
 					<Header />
