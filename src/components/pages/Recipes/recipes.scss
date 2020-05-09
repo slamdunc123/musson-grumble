@@ -60,7 +60,7 @@
 	animation-name: fadeIn;
 
 	&.small {
-		@media (min-width: 1024px) {
+		@media (min-width: 768px) {
 			display: none;
 		}
 	}
@@ -68,9 +68,9 @@
 	&.large {
 		font-size: large;
 		align-items: flex-start;
-		flex: 0 0 33.133%;
+		flex: 0 0 33.123%;
 
-		@media (max-width: 1024px) {
+		@media (max-width: 768px) {
 			display: none;
 		}
 	}
@@ -114,6 +114,11 @@
 .pasta {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
 		url(../../../assets/images/pasta.jpg);
+}
+
+.sidesandaccompaniments {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url(../../../assets/images/sides.jpg);
 }
 
 span {
