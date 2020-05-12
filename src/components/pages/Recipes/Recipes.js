@@ -38,19 +38,21 @@ const Recipes = () => {
 
 	const indexOfLastRecipe = activePage * itemsPerPage;
 	const indexOfFirstRecipe = indexOfLastRecipe - itemsPerPage;
-	const renderedRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+	const renderedRecipes = recipes.slice(
+		indexOfFirstRecipe,
+		indexOfLastRecipe
+	);
 	console.log(renderedRecipes);
 	return (
 		<>
 			<h5 align='center'>Recipes</h5>
-
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />
 				</div>
 			) : (
-				<>
-					<div className='recipes-container'>{recipeList(renderedRecipes)}</div>
+				<div className='recipes-container'>
+					{recipeList(renderedRecipes)}
 					<div className='pagination-container'>
 						<Paginate
 							activePage={activePage}
@@ -64,7 +66,7 @@ const Recipes = () => {
 							lastPageText='>>'
 						></Paginate>
 					</div>
-				</>
+				</div>
 			)}
 		</>
 	);

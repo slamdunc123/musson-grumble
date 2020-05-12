@@ -42,13 +42,13 @@ const CategoryRecipes = (props) => {
 				<>
 					<h5 align='center'>{categoryName}</h5>
 
-					<Link
+					{/* <Link
 						to={'/add/' + props.match.params.id}
 						className='nav-link btn btn-outline-info btn-sm'
 						type='button'
 					>
 						Add
-					</Link>
+					</Link> */}
 					<div>{recipeList()}</div>
 				</>
 			)}

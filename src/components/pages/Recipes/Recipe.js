@@ -87,7 +87,7 @@ const Recipe = (props) => {
 							<p>{suggestions}</p>
 						</div>
 					</div>
-					<div className='block-body'>
+					{/* <div className='block-body'>
 						<Link
 							to={'/edit/' + id}
 							type='button'
@@ -103,7 +103,7 @@ const Recipe = (props) => {
 						>
 							Delete
 						</button>
-					</div>
+					</div> */}
 				</>
 			)}
 		</>
