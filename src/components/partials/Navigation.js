@@ -41,22 +41,26 @@ const Navigation = () => {
 					<NavLink className='nav-link' exact to='/categories'>
 						Categories
 					</NavLink>
-					<NavLink className='nav-link' exact to='/about'>
-						About
-					</NavLink>
-					<NavLink className='nav-link' exact to='/contact'>
-						Contact
-					</NavLink>
 				</div>
 				<div className={`nav-burger ${burgerIcon ? 'opened' : ''}`}>
 					{burgerIcon ? (
-						<i className={'fas fa-times'} onClick={toggleBurgerMenu}></i>
+						<i
+							className={'fas fa-times'}
+							onClick={toggleBurgerMenu}
+						></i>
 					) : (
-						<i className={'fas fa-bars'} onClick={toggleBurgerMenu}></i>
+						<i
+							className={'fas fa-bars'}
+							onClick={toggleBurgerMenu}
+						></i>
 					)}
 				</div>
 				{/* navigation mobile menu  */}
-				<div className={`nav-mobile-menu ${isBurgerMenuOpen ? 'opened' : ''}`}>
+				<div
+					className={`nav-mobile-menu ${
+						isBurgerMenuOpen ? 'opened' : ''
+					}`}
+				>
 					<NavLink
 						className='nav-link'
 						onClick={(e) => {
@@ -86,26 +90,6 @@ const Navigation = () => {
 						to='/categories'
 					>
 						Categories
-					</NavLink>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/about'
-					>
-						About
-					</NavLink>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/contact'
-					>
-						Contact
 					</NavLink>
 				</div>
 			</div>
