@@ -22,7 +22,7 @@ const Categories = () => {
 
 	return (
 		<>
-			<h5 align='center'>Categories</h5>
+			<div className='breadcrumbs'>home / categories</div>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />

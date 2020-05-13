@@ -19,7 +19,7 @@ function App() {
 			{isSplash ? (
 				<SplashScreen callback={callbackSplashScreen} />
 			) : (
-				<div className='container-fluid'>
+				<div className='container'>
 					<Header />
 					<Main />
 				</div>

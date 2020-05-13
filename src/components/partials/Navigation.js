@@ -27,71 +27,66 @@ const Navigation = () => {
 	};
 
 	return (
-		<div>
-			<div className='nav-container'>
-				<Brand />
-				{/* navigation menu */}
-				<div className='nav-menu'>
-					<NavLink className='nav-link' exact to='/'>
-						Home
-					</NavLink>
-					<NavLink className='nav-link' exact to='/recipes'>
-						Recipes
-					</NavLink>
-					<NavLink className='nav-link' exact to='/categories'>
-						Categories
-					</NavLink>
-				</div>
-				<div className={`nav-burger ${burgerIcon ? 'opened' : ''}`}>
-					{burgerIcon ? (
-						<i
-							className={'fas fa-times'}
-							onClick={toggleBurgerMenu}
-						></i>
-					) : (
-						<i
-							className={'fas fa-bars'}
-							onClick={toggleBurgerMenu}
-						></i>
-					)}
-				</div>
-				{/* navigation mobile menu  */}
-				<div
-					className={`nav-mobile-menu ${
-						isBurgerMenuOpen ? 'opened' : ''
-					}`}
+		<div className='nav-container'>
+			<Brand />
+			{/* navigation menu */}
+			<div className='nav-menu'>
+				<NavLink className='nav-link' exact to='/'>
+					Home
+				</NavLink>
+				<NavLink className='nav-link' exact to='/recipes'>
+					Recipes
+				</NavLink>
+				<NavLink className='nav-link' exact to='/categories'>
+					Categories
+				</NavLink>
+			</div>
+			<div className={`nav-burger ${burgerIcon ? 'opened' : ''}`}>
+				{burgerIcon ? (
+					<i
+						className={'fas fa-times'}
+						onClick={toggleBurgerMenu}
+					></i>
+				) : (
+					<i className={'fas fa-bars'} onClick={toggleBurgerMenu}></i>
+				)}
+			</div>
+			{/* navigation mobile menu  */}
+			<div
+				className={`nav-mobile-menu ${
+					isBurgerMenuOpen ? 'opened' : ''
+				}`}
+			>
+				<NavLink
+					className='nav-link'
+					onClick={(e) => {
+						closeBurgerMenu(e);
+					}}
+					exact
+					to='/'
 				>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/'
-					>
-						Home
-					</NavLink>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/recipes'
-					>
-						Recipes
-					</NavLink>
-					<NavLink
-						className='nav-link'
-						onClick={(e) => {
-							closeBurgerMenu(e);
-						}}
-						exact
-						to='/categories'
-					>
-						Categories
-					</NavLink>
-				</div>
+					Home
+				</NavLink>
+				<NavLink
+					className='nav-link'
+					onClick={(e) => {
+						closeBurgerMenu(e);
+					}}
+					exact
+					to='/recipes'
+				>
+					Recipes
+				</NavLink>
+				<NavLink
+					className='nav-link'
+					onClick={(e) => {
+						closeBurgerMenu(e);
+					}}
+					exact
+					to='/categories'
+				>
+					Categories
+				</NavLink>
 			</div>
 		</div>
 	);

@@ -9,8 +9,9 @@
 	li {
 		list-style-type: none;
 		display: inline-block;
-		margin: 0.2em;
-		padding: 0.5em;
+		font-size: 0.75rem;
+		margin: 0.25rem;
+		padding: 0.25rem;
 		text-decoration: none;
 
 		a {
@@ -26,7 +27,7 @@
 
 	.active {
 		background: $base-color;
-		border-radius: 5px;
+		border-radius: 1px;
 
 		a {
 			color: white;

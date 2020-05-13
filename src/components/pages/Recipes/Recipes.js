@@ -45,14 +45,16 @@ const Recipes = () => {
 	console.log(renderedRecipes);
 	return (
 		<>
-			<h5 align='center'>Recipes</h5>
+			<div className='breadcrumbs'>home / recipes</div>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />
 				</div>
 			) : (
 				<div className='recipes-container'>
-					{recipeList(renderedRecipes)}
+					<div className='recipe-list'>
+						{recipeList(renderedRecipes)}
+					</div>
 					<div className='pagination-container'>
 						<Paginate
 							activePage={activePage}
