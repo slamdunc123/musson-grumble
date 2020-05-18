@@ -52,7 +52,7 @@ const Recipes = () => {
 				</div>
 			) : (
 				<div className='recipes-container'>
-					<div className='recipe-list'>
+					<div className='recipes-list'>
 						{recipeList(renderedRecipes)}
 					</div>
 					<div className='pagination-container'>

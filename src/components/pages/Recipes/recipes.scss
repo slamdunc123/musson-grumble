@@ -128,7 +128,7 @@ span {
 	font-style: italic;
 }
 
-.recipe-list {
+.recipes-list {
 	margin: 0 0 1rem 0;
 }
 
@@ -143,4 +143,37 @@ span {
 			color: darken($base-color, 10);
 		}
 	}
+}
+
+.recipe-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.recipe-header {
+	display: flex;
+	flex-direction: column;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+}
+
+.recipe-body {
+}
+
+.recipe-image {
+	display: flex;
+	width: 300px;
+	height: 150px;
+	background-color: lightgray;
+	margin: 0.5rem;
+}
+
+.recipe-field {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	margin: 0.5rem;
 }
