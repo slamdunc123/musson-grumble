@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import domain from '../../../domain';
@@ -28,6 +28,18 @@ const Recipe = (props) => {
 		if (results.status === 200) {
 			setRedirect(true);
 		}
+	};
+
+	const replaceString = (string) => {
+		var newString = string.split('\\n').map((item, index) => {
+			return (
+				<Fragment key={index}>
+					{item}
+					<br />
+				</Fragment>
+			);
+		});
+		return newString;
 	};
 
 	const {
@@ -70,7 +82,7 @@ const Recipe = (props) => {
 							</div>
 							<div className='recipe-field'>
 								<h6>Ingredients</h6>
-								<p>{ingredients}</p>
+								<p>{replaceString(ingredients)}</p>
 							</div>
 							<div className='recipe-field'>
 								<h6>Instructions</h6>
