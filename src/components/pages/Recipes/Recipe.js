@@ -31,7 +31,7 @@ const Recipe = (props) => {
 	};
 
 	const replaceString = (string) => {
-		var newString = string.split('\\n').map((item, index) => {
+		var newString = string.split('<br>').map((item, index) => {
 			return (
 				<Fragment key={index}>
 					{item}
