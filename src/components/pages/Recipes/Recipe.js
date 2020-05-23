@@ -4,6 +4,7 @@ import axios from 'axios';
 import domain from '../../../domain';
 import './recipes.scss';
 import LoadingSpinner from '../../partials/LoadingSpinner';
+import findAndRepaceText from '../../../utils/findAndReplaceText';
 
 const Recipe = (props) => {
 	const [redirect, setRedirect] = useState(false);
@@ -30,21 +31,11 @@ const Recipe = (props) => {
 		}
 	};
 
-	const replaceString = (string) => {
-		var newString = string.split('<br>').map((item, index) => {
-			return (
-				<Fragment key={index}>
-					{item}
-					<br />
-				</Fragment>
-			);
-		});
-		return newString;
-	};
-
+	console.log('recipe =', recipe);
 	const {
 		id,
 		name,
+		sub_title,
 		c_name,
 		description,
 		ingredients,
@@ -71,6 +62,10 @@ const Recipe = (props) => {
 								<p>{name}</p>
 							</div>
 							<div className='recipe-field'>
+								<h6>Sub Title</h6>
+								<p>{sub_title}</p>
+							</div>
+							<div className='recipe-field'>
 								<h6>Category</h6>
 								<p>{c_name}</p>
 							</div>
@@ -82,11 +77,11 @@ const Recipe = (props) => {
 							</div>
 							<div className='recipe-field'>
 								<h6>Ingredients</h6>
-								<p>{replaceString(ingredients)}</p>
+								<p>{findAndRepaceText(ingredients)}</p>
 							</div>
 							<div className='recipe-field'>
 								<h6>Instructions</h6>
-								<p>{instructions}</p>
+								<p>{findAndRepaceText(instructions)}</p>
 							</div>
 							<div className='recipe-field'>
 								<h6>Suggestions</h6>
