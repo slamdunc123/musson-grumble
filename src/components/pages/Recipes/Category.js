@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './recipes.scss';
+import './categories.scss';
 
 const Category = ({ category }) => {
 	const changeText = () => {
