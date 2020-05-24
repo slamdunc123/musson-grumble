@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import domain from '../../../domain';
-import Recipe from './Recipe';
-import { Link } from 'react-router-dom';
+import RecipesList from './RecipesList';
 import LoadingSpinner from '../../partials/LoadingSpinner';
 import Paginate from '../../partials/Paginate';
 import './recipes.scss';
@@ -23,14 +22,6 @@ const Recipes = () => {
 		getRecipes();
 	}, []);
 
-	const recipeList = (renderedRecipes) => {
-		return renderedRecipes.map((recipe) => (
-			<div className='recipe-link' key={recipe.id}>
-				<Link to={'/recipes/' + recipe.id}>{recipe.name}</Link>
-			</div>
-		));
-	};
-
 	const handlePageChange = (pageNumber) => {
 		console.log(`active page is ${pageNumber}`);
 		setActivePage(Number(pageNumber));
@@ -45,7 +36,6 @@ const Recipes = () => {
 	console.log(renderedRecipes);
 	return (
 		<>
-			<div className='breadcrumbs'>home / recipes</div>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />
@@ -53,7 +43,7 @@ const Recipes = () => {
 			) : (
 				<div className='recipes-container'>
 					<div className='recipes-list'>
-						{recipeList(renderedRecipes)}
+						<RecipesList renderedRecipes={renderedRecipes} />
 					</div>
 					<div className='pagination-container'>
 						<Paginate

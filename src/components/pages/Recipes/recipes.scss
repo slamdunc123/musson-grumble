@@ -130,6 +130,16 @@ span {
 
 .recipes-list {
 	margin: 0 0 1rem 0;
+
+	a {
+		color: $base-color;
+		text-decoration: none;
+
+		&:hover {
+			color: darken($base-color, 10);
+			text-decoration: none;
+		}
+	}
 }
 
 .recipe-link {
@@ -169,6 +179,21 @@ span {
 	height: 150px;
 	background-color: lightgray;
 	margin: 0.5rem;
+}
+
+.recipe-list-item {
+	display: flex;
+	margin: 0.5rem;
+
+	&-image {
+		& img {
+			// margin: 0;
+			// display: inline-block;
+		}
+	}
+	&-name {
+		margin-left: 0.5rem;
+	}
 }
 
 .recipe-field {

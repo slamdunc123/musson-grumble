@@ -22,14 +22,14 @@ const Recipe = (props) => {
 		getRecipe();
 	}, [props.match.params.id]);
 
-	const deleteRecipe = async () => {
-		const results = await axios.get(
-			`${domain}/deleteRecipe.php?id=` + recipe.id
-		);
-		if (results.status === 200) {
-			setRedirect(true);
-		}
-	};
+	// const deleteRecipe = async () => {
+	// 	const results = await axios.get(
+	// 		`${domain}/deleteRecipe.php?id=` + recipe.id
+	// 	);
+	// 	if (results.status === 200) {
+	// 		setRedirect(true);
+	// 	}
+	// };
 
 	console.log('recipe =', recipe);
 	const {
@@ -77,11 +77,11 @@ const Recipe = (props) => {
 							</div>
 							<div className='recipe-field'>
 								<h6>Ingredients</h6>
-								<p>{findAndRepaceText(ingredients)}</p>
+								{findAndRepaceText(ingredients)}
 							</div>
 							<div className='recipe-field'>
 								<h6>Instructions</h6>
-								<p>{findAndRepaceText(instructions)}</p>
+								{findAndRepaceText(instructions)}
 							</div>
 							<div className='recipe-field'>
 								<h6>Suggestions</h6>
