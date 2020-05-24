@@ -22,7 +22,7 @@ const Categories = () => {
 
 	return (
 		<>
-			<div className='breadcrumbs'>home / categories</div>
+			<div className=''>Categories</div>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />

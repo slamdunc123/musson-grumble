@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import domain from '../../../domain';
-import { Link } from 'react-router-dom';
+import RecipesList from './RecipesList';
 import LoadingSpinner from '../../partials/LoadingSpinner';
 import './recipes.scss';
 
@@ -17,22 +17,13 @@ const CategoryRecipes = (props) => {
 			);
 			console.log(results.data);
 			setRecipes(results.data);
-			setCategoryName(results.data[0].c_name);
+			setCategoryName(
+				results.data[0] ? results.data[0].c_name : 'Empty category'
+			);
 			setIsLoading(false);
 		};
 		getCategoryRecipes();
 	}, [props.match.params.id]);
-
-	const recipeList = () => {
-		if (recipes.length > 0) {
-			return recipes.map((recipe) => (
-				<div className='recipe-link' key={recipe.id}>
-					<Link to={'/recipes/' + recipe.id}>{recipe.name}</Link>
-				</div>
-			));
-		}
-		return 'No recipes';
-	};
 
 	return (
 		<>
@@ -41,15 +32,11 @@ const CategoryRecipes = (props) => {
 			) : (
 				<>
 					<h5 align='center'>{categoryName}</h5>
-
-					{/* <Link
-						to={'/add/' + props.match.params.id}
-						className='nav-link btn btn-outline-info btn-sm'
-						type='button'
-					>
-						Add
-					</Link> */}
-					<div>{recipeList()}</div>
+					<div className='recipes-container'>
+						<div className='recipes-list'>
+							<RecipesList renderedRecipes={recipes} />
+						</div>
+					</div>
 				</>
 			)}
 		</>

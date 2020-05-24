@@ -36,6 +36,7 @@ const Recipes = () => {
 	console.log(renderedRecipes);
 	return (
 		<>
+			<div className=''>Recipes</div>
 			{isLoading ? (
 				<div>
 					<LoadingSpinner />
